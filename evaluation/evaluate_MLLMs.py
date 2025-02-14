@@ -484,7 +484,7 @@ def main():
         elif args.model_version == 'g-llava':
             model_path = "renjiepi/G-LLaVA-7B"
         
-        model_base = None  # If fine-tuning, change this
+        model_base = None  # Change this if fine-tuning
         device = "cuda" if torch.cuda.is_available() else "cpu"
         
         # Configure quantization
