@@ -34,7 +34,7 @@ All images used in our experiments are in the **zipped** images folder. However,
 
 ---
 
-## 2. Evaluating Multimodal Models
+## 2. Evaluating MLLMs
 📂 **Folder:** `evaluation`  
 This folder contains code to evaluate **13 different models** on various tasks.
 
