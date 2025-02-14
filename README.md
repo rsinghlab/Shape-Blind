@@ -8,7 +8,9 @@ Despite strong performance on vision-language tasks, Multimodal Large Language M
 ## Requirements
 Python 3.9.16
 
-PyTorch Version: 2.2.0+cu121
+PyTorch Version: 2.2.1
+
+transformers: 4.48.3
 
 To install requirements:
 
@@ -43,6 +45,36 @@ To run a **shape identification task** using **LLaVA-1.5**, execute the followin
 ```bash
 python3 evaluate_MLLMs.py --model_version llava-1.5 --task shape_id --dataset_size full
 ```
+## Tasks
+
+The tasks in evaluate_MLLMs.py are as follows:
+
+- **`shape_id`**: Uses `all_shapes.csv` and asks:  
+  *"What shape is in the image?"*
+
+- **`sides_id`**: Also uses `all_shapes.csv` and asks:  
+  *"How many sides does the shape in the image have?"*
+
+- **`two_shapes`**: A multi-step reasoning task requiring:
+  1. Identifying the two shapes.
+  2. Mapping each shape to its number of sides.
+  3. Summing the total number of sides.  
+  Uses `two_shapes.csv` as input.
+
+- **`abstract`**: Uses `abstract_shapes.csv` and asks:  
+  *"How many sides does this shape have?"*  
+  This includes abstract shapes such as merged polygons, irregular polygons, and common shapes like stars and arrows.
+
+- **`triangle_cross_ABC_123`** & **`hept_ABC_123`**:  
+  These tasks evaluate **Visually-Cued Chain-of-Thought (VC-CoT)** prompting using different types of prompts.  
+  - `triangle_cross_ABC_123` uses `triangle_on_cross_ABC_123.csv`.  
+  - `hept_ABC_123` uses `heptagons_ABC_123.csv`.  
+
+- **`mathverse_CoT`**: Uses `mathverse_revised.csv` and evaluates the **vision-dominant split** of the MathVerse dataset.  
+  It compares **VC-CoT** against **direct prompting** and **MathVerse's CoT prompting**.
+
+Each task is designed to test different aspects of shape understanding, multi-step reasoning, and the effectiveness of visual cues for MLLMs.
+
 ## 3. Accuracy Calculation Notebook  
 📂 **File:** `evaluation/MLLMs_accuracy_calculations.ipynb`  
 
