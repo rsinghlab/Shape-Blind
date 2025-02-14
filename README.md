@@ -2,6 +2,7 @@
 
 ## Description
 Despite strong performance on vision-language tasks, Multimodal Large Language Models (MLLMs) struggle with mathematical problem-solving, with both open-source and state-of-the-art models falling short of human performance on visual-math benchmarks. To systematically examine visual-mathematical reasoning in MLLMs, we (1) evaluate their understanding of geometric primitives, (2) test multi-step reasoning, and (3) explore an initial solution to improve visual reasoning capabilities. Our findings reveal fundamental shortcomings in shape recognition, with top models achieving under 50% accuracy in identifying regular polygons. We analyze these failures through the lens of dual-process theory and show that MLLMs rely on System 1 (intuitive, memorized associations) rather than System 2 (deliberate reasoning). Consequently, MLLMs fail to count the sides of both familiar and novel shapes, suggesting they have neither learned the concept of ``sides'' nor effectively process visual inputs. Finally, we propose Visually Cued Chain-of-Thought (VC-CoT) prompting, which enhances multi-step mathematical reasoning by explicitly referencing visual annotations in diagrams, boosting GPT-4o’s accuracy on an irregular polygon side-counting task from 7% to 93%. Our findings suggest that System 2 reasoning in MLLMs remains an open problem, and visually-guided prompting is essential for successfully engaging visual reasoning.
+
 ![CoT_diagram](https://github.com/user-attachments/assets/3c75dc51-f2c3-4fc7-ad8d-906d6f2c1866)
 
 
@@ -55,11 +56,10 @@ The tasks in evaluate_MLLMs.py are as follows:
 - **`sides_id`**: Also uses `all_shapes.csv` and asks:  
   *"How many sides does the shape in the image have?"*
 
-- **`two_shapes`**: A multi-step reasoning task requiring:
+- **`two_shapes`**: Uses `two_shapes.csv` as input. A multi-step reasoning task requiring:
   1. Identifying the two shapes.
   2. Mapping each shape to its number of sides.
   3. Summing the total number of sides.  
-  Uses `two_shapes.csv` as input.
 
 - **`abstract`**: Uses `abstract_shapes.csv` and asks:  
   *"How many sides does this shape have?"*  
