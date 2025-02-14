@@ -1,0 +1,1 @@
+python3 evaluate_MLLMs.py --model_version llava-1.6 --task shape_id --dataset_size full
