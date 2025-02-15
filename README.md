@@ -95,14 +95,3 @@ This folder contains code for generating key visualizations from our study, incl
 - **Google N-grams figure seen in the Appendix (`google_N-grams.ipynb`)**
 
 To generate these visualizations, navigate to the `visualization` folder.
-
----
-## Authors
-
-This repository was created by:
-
-- **[Michal Golovanevsky]** ([GitHub](https://github.com/michalg04))
-- **[William Rudman]** ([GitHub](https://github.com/wrudman))
-- **[Vedant Palit]** ([GitHub](https://github.com/vedantpalit))
-
-Feel free to reach out or open an issue.
