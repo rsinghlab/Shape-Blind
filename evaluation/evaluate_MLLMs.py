@@ -411,7 +411,7 @@ def generate_text_for_rows(df, processor, model, instruction_tokens, task, model
 def main():
     parser = argparse.ArgumentParser(description="Run MLLMs on all tasks.")
     parser.add_argument('--model_version', type=str, choices=['llava-1.5', 'llava-1.6', 'blip', 'qwen', 'internvl', 'gpt-4o', 'gpt-4-turbo', 'o1','llava-one','llama-3.2','math-llava', 'g-llava', 'molmo', 'janus', 'math-puma'], required=True, help="Choose the model version.")
-    parser.add_argument('--task', type=str, choices=['shape_id', 'sides_id', 'two_shapes', 'mathverse_CoT', 'abstract','triangle_cross_ABC_123', 'hept_ABC_123'], required=True, help="Choose the task.")
+    parser.add_argument('--task', type=str, choices=['shape_id', 'sides_id', 'two_shapes', 'mathverse_CoT', 'abstract','arrow_on_plus_with_visual_cues', 'heptagons_with_visual_cues'], required=True, help="Choose the task.")
     parser.add_argument('--dataset_size', type=str, choices=['mini', 'full'], required=True, help="Choose dataset size (mini or full).")
 
     args = parser.parse_args()
@@ -594,21 +594,21 @@ def main():
         end_tokens=""
 
     if args.task == 'shape_id':
-        df = pd.read_csv("all_shapes.csv")
+        df = pd.read_csv("regular_polygons.csv")
         if args.dataset_size == 'mini':
             df = df.sample(n=10, random_state=42)
         
         df["prompt"] = instruction_tokens + "What shape is in the image? Answer with one word." + end_tokens 
 
     elif args.task == 'sides_id':
-        df = pd.read_csv("all_shapes.csv")
+        df = pd.read_csv("regular_polygons.csv")
         if args.dataset_size == 'mini':
             df = df.sample(n=10, random_state=42)
         
         df["prompt"] = instruction_tokens + "How many sides does the shape in the image have? Answer with the number." + end_tokens 
 
     elif args.task == 'two_shapes':
-        df = pd.read_csv("two_shapes.csv")
+        df = pd.read_csv("regular_polygon_pairs.csv")
         if args.dataset_size == 'mini':
             df = df.sample(n=10, random_state=42)
             
@@ -620,15 +620,15 @@ def main():
             df = df.sample(n=10, random_state=42)
         df["prompt"] = instruction_tokens + "How many sides does this shape have? Answer with one word." + end_tokens # Answer with one word.
 
-    elif args.task == 'hept_ABC_123':
-        df = pd.read_csv("heptagons_ABC_123.csv")
+    elif args.task == 'heptagons_with_visual_cues':
+        df = pd.read_csv("heptagons_with_visual_cues.csv.csv")
         if args.dataset_size == 'mini':
             df = df.sample(n=10, random_state=42)
             
         df["prompt"] = instruction_tokens + df["prompt"] + end_tokens
         
-    elif args.task == 'triangle_cross_ABC_123':
-        df = pd.read_csv("triangle_on_cross_ABC_123.csv")
+    elif args.task == 'arrow_on_plus_with_visual_cues':
+        df = pd.read_csv("arrow_on_plus_with_visual_cues.csv")
         if args.dataset_size == 'mini':
             df = df.sample(n=10, random_state=42)    
         df["prompt"] = instruction_tokens + df["prompt"] + end_tokens
