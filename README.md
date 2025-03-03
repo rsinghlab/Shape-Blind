@@ -50,13 +50,13 @@ python3 evaluate_MLLMs.py --model_version llava-1.5 --task shape_id --dataset_si
 
 The tasks in evaluate_MLLMs.py are as follows:
 
-- **`shape_id`**: Uses `all_shapes.csv` and asks:  
+- **`shape_id`**: Uses `regular_polygons.csv` and asks:  
   *"What shape is in the image?"*
 
-- **`sides_id`**: Also uses `all_shapes.csv` and asks:  
+- **`sides_id`**: Also uses `regular_polygons.csv` and asks:  
   *"How many sides does the shape in the image have?"*
 
-- **`two_shapes`**: Uses `two_shapes.csv` as input. A multi-step reasoning task requiring:
+- **`two_shapes`**: Uses `regular_polygon_pairs.csv` as input. A multi-step reasoning task requiring:
   1. Identifying the two shapes.
   2. Mapping each shape to its number of sides.
   3. Summing the total number of sides.  
@@ -65,10 +65,10 @@ The tasks in evaluate_MLLMs.py are as follows:
   *"How many sides does this shape have?"*  
   This includes abstract shapes such as merged polygons, irregular polygons, and common shapes like stars and arrows.
 
-- **`triangle_cross_ABC_123`** & **`hept_ABC_123`**:  
+- **`heptagons_with_visual_cues`** & **`arrow_on_plus_with_visual_cues`**:  
   These tasks evaluate **Visually-Cued Chain-of-Thought (VC-CoT)** prompting using different types of prompts.  
-  - `triangle_cross_ABC_123` uses `triangle_on_cross_ABC_123.csv`.  
-  - `hept_ABC_123` uses `heptagons_ABC_123.csv`.  
+  - `arrow_on_plus_with_visual_cues` uses `arrow_on_plus_with_visual_cues.csv`.  
+  - `heptagons_with_visual_cues` uses `heptagons_with_visual_cues.csv`.  
 
 - **`mathverse_CoT`**: Uses `mathverse_revised.csv` and evaluates the **vision-dominant split** of the MathVerse dataset.  
   It compares **VC-CoT** against **direct prompting** and **MathVerse's CoT prompting**.
